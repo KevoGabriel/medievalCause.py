@@ -5,7 +5,7 @@ import pygame.image
 class Menu:
     def __init__(self, window):
         self.window = window
-        self.surf = pygame.image.load("./asset/terrace.png")
+        self.surf = pygame.image.load("./asset/Menu_battle.png")
         self.rect = self.surf.get_rect(left=0, top=0)
             
     
