@@ -9,15 +9,15 @@ class Game:
         pygame.init()
         self.window = pygame.display.set_mode(size = (600, 480))
 
-    def run(self, ):
+    def run(self):
         while True:
             menu = Menu(self.window)
-            menu.run
+            menu.run()
             pass
         
-            # Check for all events
+            #Check for all events
             #for event in pygame.event.get():
-                #if event.type == pygame.QUIT: # Evento contido nos contents
-                    #pygame.quit() # Close Window
-                    #quit() # end pygame
+            #    if event.type == pygame.QUIT: # Evento contido nos contents
+            #        pygame.quit() # Close Window
+            #        quit() # end pygame
                     
