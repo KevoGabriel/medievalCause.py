@@ -12,10 +12,22 @@ class Level:
         self.game_mode = game_mode # E também para não me perder nas aulas práticas xD
         self.entity_list: list[Entity] = []
         self.entity_list.extend(EntityFactory.get_entity("Menu_battle"))
+        self.timeout = 20000
 
     def run(self):
+        pygame.mixer_music.load(f"./asset/MedievalCause.mp3")
+        pygame.mixer_music.play(-1)
+        clock = pygame.time.Clock()
         while True:
+            clock.tick(60)
             for ent in self.entity_list:
                 self.window.blit(source=ent.surf, dest=ent.rect)
             pygame.display.flip()
-        pass
+            
+        #Check for all events
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT: # Evento contido nos contents
+                    pygame.quit() # Close Window
+                    quit() # end pygame
+                
+                
