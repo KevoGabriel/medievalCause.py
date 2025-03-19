@@ -28,8 +28,7 @@ class Level:
             clock.tick(60)
             
             for ent in self.entity_list:
-                if isinstance(ent, Player):
-                    ent.move()
+                ent.move()
                 self.window.blit(source=ent.surf, dest=ent.rect)
                 
             pygame.display.flip()
@@ -40,8 +39,6 @@ class Level:
                     pygame.quit() # Close Window
                     quit() # end pygame
                 if event.type == EVENT_ENEMY:
-                    print("Evento disparado")
                     self.entity_list.append(EntityFactory.get_entity("Enemy1"))
                     
-                    print("Inimigo criado")
                 
