@@ -23,7 +23,7 @@ class Menu:
             
             self.window.blit(source=self.surf, dest=self.rect)
             
-            self.menu_text(170, "Medieval", (227, 4, 0), ((1920 / 2), 120))
+            self.menu_text(170, "Feudal", (227, 4, 0), ((1920 / 2), 120))
             self.menu_text(170, "Cause", (227, 4, 0), ((1920 / 2), 280))
             
             for i in range(len(MENU_OPT)):
