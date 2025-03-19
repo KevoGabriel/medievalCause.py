@@ -18,4 +18,4 @@ class EntityFactory:
                 case "Player1":
                     return Player("Player1", (int(1920/2), int(1080/2)))
                 case "Enemy1":
-                    return Enemy("Enemy1", ((1920), random.randint(450, 1080)))
+                    return Enemy("Enemy1", ((1920), random.randint(450, 1000)))

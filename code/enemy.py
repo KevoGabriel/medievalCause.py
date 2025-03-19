@@ -11,6 +11,9 @@ class Enemy(Entity):
         
           # Aumentando para 2x o tamanho original
         self.surf = pygame.transform.scale_by(self.surf, 2)
+        
+             # Espelhando horizontalmente (flip no eixo X)
+        self.surf = pygame.transform.flip(self.surf, True, False)
 
     def move(self):
         self.rect.centerx -= 3
