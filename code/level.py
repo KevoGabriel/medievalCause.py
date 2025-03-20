@@ -4,6 +4,7 @@ import pygame
 
 from code.Entity import Entity
 from code.EntityFactory import EntityFactory
+from code.EntityMediator import EntityMediator
 from code.Player import Player
 from code.const import EVENT_ENEMY
 
@@ -33,6 +34,10 @@ class Level:
                 
             pygame.display.flip()
             
+            # Verificação de dano e vida
+            EntityMediator.verify_colision(entity_list=self.entity_list)
+            EntityMediator.verify_health(entity_list=self.entity_list)
+            
         #Check for all events
             for event in pygame.event.get():
                 if event.type == pygame.QUIT: # Evento contido nos contents
@@ -41,4 +46,3 @@ class Level:
                 if event.type == EVENT_ENEMY:
                     self.entity_list.append(EntityFactory.get_entity("Enemy1"))
                     
-                

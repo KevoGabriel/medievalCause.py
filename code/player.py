@@ -10,6 +10,9 @@ class Player(Entity):
         
           # Aumentando para 2x o tamanho original
         self.surf = pygame.transform.scale_by(self.surf, 2)
+        
+        # Variável para controlar a direção do player
+        self.facing_left = False  # Começa virado para a direita
 
     def move(self, ):
         pressed_key = pygame.key.get_pressed()
@@ -17,8 +20,15 @@ class Player(Entity):
             self.rect.centery -= 8
         if pressed_key[pygame.K_DOWN] and self.rect.bottom < 1000: # Para o boneco não ficar com a parte do corpo fora da base da tela
             self.rect.centery += 8
+            
         if pressed_key[pygame.K_LEFT] and self.rect.left > 0:
             self.rect.centerx -= 6
-        if pressed_key[pygame.K_RIGHT] and self.rect.right < 1920: 
+            if not self.facing_left:  # Só espelha se a direção mudar
+                self.surf = pygame.transform.flip(self.surf, True, False)
+                self.facing_left = True
+
+        if pressed_key[pygame.K_RIGHT] and self.rect.right < 1920:
             self.rect.centerx += 6
-        pass
+            if self.facing_left:  # Só espelha se a direção mudar
+                self.surf = pygame.transform.flip(self.surf, True, False)
+                self.facing_left = False
