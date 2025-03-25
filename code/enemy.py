@@ -18,4 +18,5 @@ class Enemy(Entity):
     def move(self):
         self.rect.centerx -= 3
         if self.rect.right <= 0:
-            self.rect.left = 1920 + 50
+            self.rect.left = 1920 + 50 # Como meu jogo não terá levels, achei valido deixar dessa forma para que tenha 
+                                            # tenha cada vez mais esqueletos para o player desviar/matar.
