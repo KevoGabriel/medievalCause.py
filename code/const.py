@@ -12,3 +12,9 @@ ENTITY_HEALTH = {
     "Enemy1": 10,
     "Menu_battle0": 99999,
 }
+
+ENTITY_DAMAGE = {
+    "Player1": 10,
+    "Enemy1": 10,
+    "Menu_battle0": 99999,
+}

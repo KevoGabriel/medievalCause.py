@@ -18,6 +18,10 @@ class Player(Entity):
         self.facing_left = False
         self.is_attacking = False
         self.attack_timer = 0
+        
+        self.invulnerable = False
+        self.invuln_timer = 0
+
 
     def move(self):
         pressed_key = pygame.key.get_pressed()
@@ -41,13 +45,31 @@ class Player(Entity):
             self.is_attacking = True
             self.attack_timer = pygame.time.get_ticks()
             self.surf = self.attack_surf
-            self.attack_sound.play()  # 🔊 TOCA O SOM DE ATAQUE
+            self.attack_sound.play() 
 
         if self.is_attacking and pygame.time.get_ticks() - self.attack_timer > 200:
             self.surf = self.original_surf
             self.is_attacking = False
 
+
+        if self.invulnerable and pygame.time.get_ticks() - self.invuln_timer > 1000:  # 1 segundo de invulnerabilidade
+            self.invulnerable = False
+
+
     def _flip_images(self):
         self.surf = pygame.transform.flip(self.surf, True, False)
         self.attack_surf = pygame.transform.flip(self.attack_surf, True, False)
         self.original_surf = pygame.transform.flip(self.original_surf, True, False)
+        
+        
+    def get_attack_rect(self):
+        if not self.is_attacking:
+            return None
+        attack_rect = self.attack_surf.get_rect()
+        attack_rect.centery = self.rect.centery
+        if self.facing_left:
+            attack_rect.right = self.rect.left
+        else:
+            attack_rect.left = self.rect.right
+        return attack_rect
+
